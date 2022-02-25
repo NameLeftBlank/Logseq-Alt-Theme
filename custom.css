@@ -1,0 +1,230 @@
+/*@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap');
+:root {
+  --ls-tag-text-opacity: 0.8;
+  --ls-tag-text-hover-opacity: 0.8;
+  --ls-font-family: 'Roboto Mono';
+  --ls-page-text-size: 14px;
+  --ls-page-title-size: 36px;
+  --ls-font-weight: 800;
+}
+
+.dark-theme, html[data-theme=dark]{
+  --background: #1f1e1e;
+  --dark-background: #333333;
+  --light-background: #343746;
+  --current-line: #44475a;
+  --foreground: #f8f8f2;
+  --comment: rgb(209, 208, 208);
+
+  --active-bullet-color: rgb(150, 194, 187);
+
+  --text-color: white;
+  --italics-color: rgb(140, 207, 162);
+  --bold-color: rgb(108, 235, 235);
+  --url-link-color: #8be9fd;
+  --url-link-hover-color: #8be9fd80;
+  --tag-text-color: var(--text-color);
+  --tag-background-color: rgba(0, 0, 0, .2);
+
+  /*Page link colors*/
+  --ls-link-text-color: #8be9fd;
+  --ls-link-text-hover-color: #8be9fd;
+
+  /*scrollbar*/
+  --ls-scrollbar-background-color: var(--background);
+  --ls-scrollbar-foreground-color: var(--dark-background);
+  --ls-scrollbar-thumb-hover-color: var(--light-background);
+  
+  /* color of indent lines */
+  --even-indent-line-color: var(--foreground);
+  --odd-indent-line-color: #C4C4C0;
+
+  /*Code block colors*/
+  --color-string: #99C794;
+  --color-variable: white;
+  /*Logseq variables*/
+  --ls-primary-background-color: var(--background);
+  /*Sidebar*/
+  --ls-secondary-background-color: var(--dark-background); /*Side bar background*/
+  --ls-tertiary-background-color: var(--light-background);
+  --ls-quaternary-background-color: var(--light-background);
+
+  --ls-primary-text-color: var(--text-color);
+  /* header colors */
+  --ls-head-text-color: var(--text-color);
+  --ls-head-text-color: var(--text-color);
+  --ls-title-text-color: var(--text-color);
+  /* bullet colors */
+  --ls-block-bullet-border-color: var(--current-line);
+  --ls-block-bullet-color: var(--foreground);
+  --ls-block-highlight-color: var(--current-line);
+  --ls-block-properties-background-color: var(--light-background);
+
+  --ls-search-background-color: var(--background);
+  --ls-border-color: rgba(255,255,255,.5);
+  --ls-secondary-border-color: var(--ls-border-color);
+  --ls-table-tr-even-background-color: var(--dark-background);
+  
+  --ls-guideline-color: var(--ls-border-color);
+  --color-level-1: var(--ls-secondary-background-color);
+  --color-level-2: var(--ls-primary-background-color);
+  --color-level-3: var(--ls-quaternary-background-color);
+  --color-level-4: var(--ls-tertiary-background-color);
+  --color-level-5: var(--ls-quinary-background-color);
+}
+
+/* Color bullet of active block*/
+.ls-block .bullet {
+  background-color: var(--active-bullet-color);
+}
+
+.ls-block:not(:focus-within) .bullet{
+  background-color: var(--ls-block-bullet-color);
+}
+
+/* -- Color indent levels --*/
+.block-children {
+  border-left: 0px solid;
+}
+.block-children [level="2"],
+.block-children [level="4"],
+.block-children [level="6"],
+.block-children [level="8"]  {
+  border-left: 1px solid;
+  border-left-color: var(--even-indent-line-color);
+}
+.block-children [level="3"],
+.block-children [level="5"],
+.block-children [level="7"],
+.block-children [level="9"]  {
+  border-left: 1px solid;
+  border-left-color: var(--odd-indent-line-color);
+}
+/* fixing spacing between indents*/
+.ls-block {
+  margin: -2px 0px -2px -1px;
+}
+
+/*italics color*/
+i {
+  color: var(--italics-color);
+}
+
+/*Bold*/
+b{
+ color: var(--bold-color);
+}
+/*Url links*/
+.external-link {
+  color: var(--url-link-color);
+  text-decoration: none;
+  border-bottom: none;
+}
+.external-link:hover {
+  color: var(--url-link-hover-color);
+}
+
+html,
+body{
+  font-weight: var(--ls-font-weight);
+  background-color: var(--background);
+  background: var(--background);
+}
+
+a.tag{
+  color: var(--tag-text-color);
+  background: var(--tag-background-color);
+  font-weight: 600;
+}
+
+/* inline code */
+:not(pre) > code {
+  color: var(--comment);
+  background-color: var(--light-background);
+  font-size: var(--ls-page-text-size) + 2px;
+}
+/* -- Code block styling -- */
+/* Background of code block*/
+html[data-theme="dark"] .CodeMirror {
+  font-weight: 800;
+  background: var(--background);
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+
+/* Left side of code block where numbers are at*/
+html[data-theme="dark"] .CodeMirror .CodeMirror-gutters {
+  background-color: transparent;
+}
+/*Color of line number text*/
+html[data-theme="dark"] .CodeMirror .CodeMirror-linenumber {
+  color: var(--comment);
+}
+/*Color of code mirror line cursor*/
+html[data-theme="dark"] .CodeMirror .CodeMirror-cursor {
+  border-left: solid 1px #fff;
+}
+html[data-theme="dark"] .CodeMirror span.cm-comment {
+  color: var(--comment);
+}
+html[data-theme="dark"] .CodeMirror span.cm-string,
+html[data-theme="dark"] .CodeMirror span.cm-string-2 {
+  color: var(--color-string);
+}
+/*Color of variable name when referencing it*/
+html[data-theme="dark"] .CodeMirror span.cm-variable {
+  color: var(--color-variable);
+}
+/* Color of name when defining (var name, function name)*/
+html[data-theme="dark"] .CodeMirror span.cm-def {
+  color: var(--color-variable);
+}
+/* Color of numbers*/
+html[data-theme="dark"] .CodeMirror span.cm-number {
+  color: #F99157;
+}
+/*Operators (=, +, -)*/
+html[data-theme="dark"] .CodeMirror span.cm-operator {
+  color: white;
+}
+/*Built in functions (print() in python)*/
+html[data-theme="dark"] .CodeMirror span.cm-builtin {
+  color: #7FBFFF;
+}
+/*Function names, variable types*/
+html[data-theme="dark"] .CodeMirror span.cm-keyword {
+  color: #C594C5;
+}
+/*Property of object / class (item.property)*/
+html[data-theme="dark"] .CodeMirror span.cm-property {
+  color: #7FBFFF;
+}
+
+html[data-theme="dark"] .CodeMirror span.cm-qualifier {
+  color: yellow;
+}
+html[data-theme="dark"] .CodeMirror span.cm-attribute {
+  color: yellow;
+}
+
+html[data-theme="dark"] .CodeMirror span.cm-variable-2,
+html[data-theme="dark"] .CodeMirror span.cm-variable-3,
+html[data-theme="dark"] .CodeMirror span.cm-type {
+  color: yellow;
+}
+
+html[data-theme="dark"] #right-sidebar pre.CodeMirror-line {
+  background: transparent;
+}
+/* Side bar icon color */
+.ti{
+  color: white;
+}
+/* Side bar link colors*/
+.left-sidebar-inner a.item > span {
+  color: white;
+}
+
